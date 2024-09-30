@@ -53,15 +53,15 @@ class TestH2HLeague:
         with pytest.raises(Exception):
             await h2h_league.get_fixtures(gameweek=1)
 
-    @pytest.mark.skip(reason="Need to mock logging in properly.")
-    async def test_get_fixtures_with_known_gameweek_authorized(
-            self, mocker, fpl, h2h_league):
-        mocked_logged_in = mocker.patch(
-            "fpl.models.h2h_league.logged_in", return_value=True)
+    # @pytest.mark.skip(reason="Need to mock logging in properly.")
+    # async def test_get_fixtures_with_known_gameweek_authorized(
+    #         self, mocker, fpl, h2h_league):
+    #     mocked_logged_in = mocker.patch(
+    #         "fpl.models.h2h_league.logged_in", return_value=True)
 
-        fixtures = await h2h_league.get_fixtures(gameweek=1)
-        assert isinstance(fixtures, list)
-        mocked_logged_in.assert_called_once()
+    #     fixtures = await h2h_league.get_fixtures(gameweek=1)
+    #     assert isinstance(fixtures, list)
+    #     mocked_logged_in.assert_called_once()
 
     @pytest.mark.asyncio
     async def test_get_fixtures_with_unknown_gameweek_unauthorized(
@@ -69,12 +69,12 @@ class TestH2HLeague:
         with pytest.raises(Exception):
             await h2h_league.get_fixtures()
 
-    @pytest.mark.skip(reason="Need to mock logging in properly.")
-    async def test_get_fixtures_with_unknown_gameweek_authorized(
-            self, mocker, fpl, h2h_league):
-        mocked_logged_in = mocker.patch(
-            "fpl.models.h2h_league.logged_in", return_value=True)
-        await fpl.login()
-        fixtures = await h2h_league.get_fixtures()
-        assert isinstance(fixtures, list)
-        mocked_logged_in.assert_called_once()
+    # @pytest.mark.skip(reason="Need to mock logging in properly.")
+    # async def test_get_fixtures_with_unknown_gameweek_authorized(
+    #         self, mocker, fpl, h2h_league):
+    #     mocked_logged_in = mocker.patch(
+    #         "fpl.models.h2h_league.logged_in", return_value=True)
+    #     await fpl.login()
+    #     fixtures = await h2h_league.get_fixtures()
+    #     assert isinstance(fixtures, list)
+    #     mocked_logged_in.assert_called_once()
